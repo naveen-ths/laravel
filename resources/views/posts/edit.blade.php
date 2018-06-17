@@ -8,7 +8,7 @@
                 <h2>Edit Item</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('post.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('posts.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -24,7 +24,7 @@
     </div>
     @endif
 
-    {!! Form::model($post, ['method' => 'PATCH','route' => ['post.update', $post->id]]) !!}
+    {!! Form::model($post, ['method' => 'PATCH','route' => ['posts.update', $post->id]]) !!}
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">

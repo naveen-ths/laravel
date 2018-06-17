@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Post;
+use Auth;
 
 class PostController extends Controller {
 
@@ -12,7 +13,7 @@ class PostController extends Controller {
     
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'clearance']);
     }
 
     /**
@@ -23,7 +24,7 @@ class PostController extends Controller {
     public function index()
     {
         $posts = Post::latest()->paginate(10);
-        return view('post.index', compact('posts'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('posts.index', compact('posts'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
     /**
      * Show the form for creating a new resource.
@@ -32,7 +33,7 @@ class PostController extends Controller {
      */
     public function create()
     {
-        return view('post.create');
+        return view('posts.create');
     }
 
     /**
@@ -45,11 +46,11 @@ class PostController extends Controller {
     {
         //
         $this->validate($request, [
-            'title' => 'required',
+            'title' => 'required|max:100',
             'description' => 'required',
         ]);
         Post::create($request->all());
-        return redirect()->route('post.index')
+        return redirect()->route('posts.index')
                         ->with('success', 'Post created successfully');
     }
 
@@ -63,7 +64,7 @@ class PostController extends Controller {
     {
         //
         $post = Post::find($id);
-        return view('post.show', compact('post'));
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -76,7 +77,7 @@ class PostController extends Controller {
     {
         //
         $post = Post::find($id);
-        return view('post.edit', compact('post'));
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -90,11 +91,11 @@ class PostController extends Controller {
     {
         //
         $this->validate($request, [
-            'title' => 'required',
+            'title' => 'required|max:100',
             'description' => 'required',
         ]);
         Post::find($id)->update($request->all());
-        return redirect()->route('post.index')
+        return redirect()->route('posts.index')
                         ->with('success', 'Post updated successfully');
     }
 
@@ -108,7 +109,7 @@ class PostController extends Controller {
     {
         //
         Post::find($id)->delete();
-        return redirect()->route('post.index')
+        return redirect()->route('posts.index')
                         ->with('success', 'Post deleted successfully');
     }
 

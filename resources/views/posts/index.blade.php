@@ -8,7 +8,7 @@
                 <h2>Posts</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('post.create') }}"> Create New Item</a>
+                <a class="btn btn-success" href="{{ route('posts.create') }}"> Create New Item</a>
             </div>
         </div>
     </div>
@@ -32,11 +32,15 @@
             <td>{{ $item->title }}</td>
             <td>{{ $item->description }}</td>
             <td>
-                <a class="btn btn-info" href="{{ route('post.show',$item->id) }}">Show</a>
-                <a class="btn btn-primary" href="{{ route('post.edit',$item->id) }}">Edit</a>
-                {!! Form::open(['method' => 'DELETE','route' => ['post.destroy', $item->id],'style'=>'display:inline']) !!}
-                {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                {!! Form::close() !!}
+                <a class="btn btn-info" href="{{ route('posts.show',$item->id) }}">Show</a>
+                @can('Edit Post')
+                    <a class="btn btn-primary" href="{{ route('posts.edit',$item->id) }}">Edit</a>
+                @endcan
+                @can('Delete Post')
+                    {!! Form::open(['method' => 'DELETE','route' => ['posts.destroy', $item->id],'style'=>'display:inline']) !!}
+                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                    {!! Form::close() !!}
+                @endcan
             </td>
         </tr>
         @endforeach

@@ -8,7 +8,7 @@
                 <h2>Post Detail</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('post.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('posts.index') }}"> Back</a>
             </div>
         </div>
     </div>
