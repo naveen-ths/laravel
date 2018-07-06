@@ -48,8 +48,25 @@ class PostController extends Controller {
         $this->validate($request, [
             'title' => 'required|max:100',
             'description' => 'required',
+            'featured_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-        Post::create($request->all());
+        
+        $fileName = null;
+        if ($request->hasFile('featured_image')) {
+            $file = $request->file('featured_image');
+            $fileName = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads');
+            $file->move($destinationPath, $fileName);
+        }
+        
+        $post = new Post;
+
+        $post->title = $request->title;
+        $post->excerpt = $request->description;
+        $post->description = $request->description;
+        $post->featured_image = $fileName;
+
+        $post->save();
         return redirect()->route('posts.index')
                         ->with('success', 'Post created successfully');
     }

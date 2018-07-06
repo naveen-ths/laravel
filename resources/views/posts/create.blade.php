@@ -24,12 +24,18 @@
     </div>
     @endif
 
-    {!! Form::open(array('route' => 'posts.store','method'=>'POST')) !!}
+    {!! Form::open(array('route' => 'posts.store','method'=>'POST','enctype' => 'multipart/form-data')) !!}
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Title:</strong>
                 {!! Form::text('title', null, array('placeholder' => 'Title','class' => 'form-control')) !!}
+            </div>
+        </div>
+        
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+            {!! Form::file('featured_image', array('class' => 'form-control')) !!}
             </div>
         </div>
 
