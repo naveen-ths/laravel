@@ -24,7 +24,7 @@ class PostController extends Controller {
     public function index()
     {
         $posts = Post::latest()->paginate(10);
-        return view('posts.index', compact('posts'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('backend.posts.index', compact('posts'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
     /**
      * Show the form for creating a new resource.
@@ -33,7 +33,7 @@ class PostController extends Controller {
      */
     public function create()
     {
-        return view('posts.create');
+        return view('backend.posts.create');
     }
 
     /**
@@ -81,7 +81,7 @@ class PostController extends Controller {
     {
         //
         $post = Post::find($id);
-        return view('posts.show', compact('post'));
+        return view('backend.posts.show', compact('post'));
     }
 
     /**
@@ -94,7 +94,7 @@ class PostController extends Controller {
     {
         //
         $post = Post::find($id);
-        return view('posts.edit', compact('post'));
+        return view('backend.posts.edit', compact('post'));
     }
 
     /**

@@ -23,7 +23,7 @@ class RoleController extends Controller {
     public function index() {
         $roles = Role::all(); //Get all roles
 
-        return view('roles.index')->with('roles', $roles);
+        return view('backend.roles.index')->with('roles', $roles);
     }
 
     /**
@@ -34,7 +34,7 @@ class RoleController extends Controller {
     public function create() {
         $permissions = Permission::all(); //Get all permissions
 
-        return view('roles.create', ['permissions' => $permissions]);
+        return view('backend.roles.create', ['permissions' => $permissions]);
     }
 
     /**
@@ -90,7 +90,7 @@ class RoleController extends Controller {
         $role = Role::findOrFail($id);
         $permissions = Permission::all();
 
-        return view('roles.edit', compact('role', 'permissions'));
+        return view('backend.roles.edit', compact('role', 'permissions'));
     }
 
     /**

@@ -24,3 +24,4 @@ Route::resource('posts', 'PostController');
 Route::resource('users', 'UserController');
 Route::resource('roles', 'RoleController');
 Route::resource('permissions', 'PermissionController');
+Route::get('/home', 'PageController@home')->name('home');
