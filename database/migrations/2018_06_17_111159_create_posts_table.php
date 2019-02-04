@@ -13,15 +13,17 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title');
-            $table->text('excerpt');
-            $table->text('description');
-            $table->string('featured_image');
-            $table->tinyInteger('status');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('posts')) {
+            Schema::create('posts', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('title');
+                $table->text('excerpt');
+                $table->text('description');
+                $table->string('featured_image');
+                $table->tinyInteger('status');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

@@ -60,6 +60,7 @@
                         @else
                         <li>
                             <a href="{{ route('posts.index') }}">Post</a>
+                            <a href="{{ route('categories.index') }}">Categories</a>
                         </li>
                         @role('Admin') {{-- Laravel-permission blade helper --}}
                             <!--<li><a href="#"><i class="fa fa-btn fa-unlock"></i>Admin</a></li>-->

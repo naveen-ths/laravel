@@ -58,9 +58,11 @@ class PostController extends Controller {
             $destinationPath = public_path('/uploads');
             $file->move($destinationPath, $fileName);
         }
+        // Author Id
+        $id = Auth::id();
         
         $post = new Post;
-
+        $post->author_id = $id;
         $post->title = $request->title;
         $post->excerpt = $request->description;
         $post->description = $request->description;
