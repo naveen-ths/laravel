@@ -6,14 +6,13 @@ use Illuminate\Http\Request;
 use App\Category;
 use Auth;
 
-class CategoryController extends Controller
-{
-    
+class CategoryController extends Controller {
+
     public function __construct()
     {
         $this->middleware(['auth', 'clearance']);
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +42,30 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //form validation
+        $this->validate($request, [
+            'cat_title' => 'required|max:100',
+            'cat_description' => 'required',
+            'cat_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $fileName = null;
+        if ($request->hasFile('cat_image')) {
+            $file = $request->file('cat_image');
+            $fileName = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads');
+            $file->move($destinationPath, $fileName);
+        }
+        // Author Id
+
+        $post = new Category;
+        $post->cat_title = $request->cat_title;
+        $post->cat_description = $request->cat_description;
+        $post->cat_image = $fileName;
+
+        $post->save();
+        return redirect()->route('categories.index')
+                        ->with('success', 'Category created successfully');
     }
 
     /**
@@ -79,7 +101,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'cat_title' => 'required|max:100',
+            'cat_description' => 'required',
+        ]);
+        Post::find($id)->update($request->all());
+        return redirect()->route('categories.index')
+                        ->with('success', 'Category updated successfully');
     }
 
     /**
@@ -92,4 +120,5 @@ class CategoryController extends Controller
     {
         //
     }
+
 }

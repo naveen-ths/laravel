@@ -40,6 +40,14 @@
             </div>
         </div>
 
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Featured Image:</strong>
+                {!! Form::file('featured_image', array('class' => 'form-control')) !!}
+                <br />Old Image: <img src="/uploads/{{ $post->featured_image }}" height="50px" width="50px" class="thumbnail" />
+            </div>
+        </div>
+
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>

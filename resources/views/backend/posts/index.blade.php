@@ -23,6 +23,7 @@
             <th>No</th>
             <th>Title</th>
             <th>Description</th>
+            <th>Featured Image</th>
             <th width="280px">Action</th>
         </tr>
 
@@ -31,15 +32,16 @@
             <td>{{ ++$i }}</td>
             <td>{{ $item->title }}</td>
             <td>{{ $item->description }}</td>
+            <td><img src="/uploads/{{ $item->featured_image }}" height="30px" width="30px" /></td>
             <td>
                 <a class="btn btn-info" href="{{ route('posts.show',$item->id) }}">Show</a>
                 @can('Edit Post')
-                    <a class="btn btn-primary" href="{{ route('posts.edit',$item->id) }}">Edit</a>
+                <a class="btn btn-primary" href="{{ route('posts.edit',$item->id) }}">Edit</a>
                 @endcan
                 @can('Delete Post')
-                    {!! Form::open(['method' => 'DELETE','route' => ['posts.destroy', $item->id],'style'=>'display:inline']) !!}
-                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                    {!! Form::close() !!}
+                {!! Form::open(['method' => 'DELETE','route' => ['posts.destroy', $item->id],'style'=>'display:inline']) !!}
+                {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                {!! Form::close() !!}
                 @endcan
             </td>
         </tr>
