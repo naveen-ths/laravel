@@ -58,12 +58,12 @@ class CategoryController extends Controller {
         }
         // Author Id
 
-        $post = new Category;
-        $post->cat_title = $request->cat_title;
-        $post->cat_description = $request->cat_description;
-        $post->cat_image = $fileName;
+        $cat = new Category;
+        $cat->cat_title = $request->cat_title;
+        $cat->cat_description = $request->cat_description;
+        $cat->cat_image = $fileName;
 
-        $post->save();
+        $cat->save();
         return redirect()->route('categories.index')
                         ->with('success', 'Category created successfully');
     }
@@ -105,7 +105,19 @@ class CategoryController extends Controller {
             'cat_title' => 'required|max:100',
             'cat_description' => 'required',
         ]);
-        Post::find($id)->update($request->all());
+        
+        $fileName = null;
+        if ($request->hasFile('cat_image')) {
+            $file = $request->file('cat_image');
+            $fileName = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads');
+            $file->move($destinationPath, $fileName);
+        }
+        if($fileName != null){
+            $request->cat_image = $fileName;
+        }
+
+        Category::find($id)->update($request->all());
         return redirect()->route('categories.index')
                         ->with('success', 'Category updated successfully');
     }

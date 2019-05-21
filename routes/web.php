@@ -22,6 +22,8 @@ Route::get('/profile', 'Auth\ProfileController@index')->name('profile');
 
 Route::resource('posts', 'PostController');
 Route::resource('categories', 'CategoryController');
+Route::resource('tags', 'TagController');
+Route::resource('settings', 'SettingController');
 Route::resource('users', 'UserController');
 Route::resource('roles', 'RoleController');
 Route::resource('permissions', 'PermissionController');

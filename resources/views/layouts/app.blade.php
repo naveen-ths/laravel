@@ -61,6 +61,15 @@
                         <li>
                             <a href="{{ route('posts.index') }}">Post</a>
                         </li>
+                        <li>
+                            <a href="{{ route('categories.index') }}">Categories</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('tags.index') }}">Tags</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('settings.index') }}">Settings</a>
+                        </li>
                         @role('Admin') {{-- Laravel-permission blade helper --}}
                             <!--<li><a href="#"><i class="fa fa-btn fa-unlock"></i>Admin</a></li>-->
                             <li><a href="{{ route('users.index') }}"><i class="fa fa-users"></i>Users</a></li>

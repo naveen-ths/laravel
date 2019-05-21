@@ -5,10 +5,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit Categories</h2>
+                <h2>Edit Tags</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('categories.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('tags.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -24,27 +24,26 @@
     </div>
     @endif
 
-    {!! Form::model($category, ['method' => 'PATCH','route' => ['categories.update', $category->id]]) !!}
+    {!! Form::model($tag, ['method' => 'PATCH','route' => ['tags.update', $tag->id]]) !!}
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Title:</strong>
-                {!! Form::text('cat_title', null, array('placeholder' => 'Title','class' => 'form-control')) !!}
+                {!! Form::text('tag_title', null, array('placeholder' => 'Title','class' => 'form-control')) !!}
+            </div>
+        </div>
+        
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Slug:</strong>
+                {!! Form::text('tag_slug', null, array('placeholder' => 'Slug','class' => 'form-control')) !!}
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Description:</strong>
-                {!! Form::textarea('cat_description', null, array('placeholder' => 'Description','class' => 'form-control','style'=>'height:100px')) !!}
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Category Image:</strong>
-                {!! Form::file('cat_image', array('class' => 'form-control')) !!}
-                <br />Old Image: <img src="/uploads/{{ $category->cat_image }}" height="50px" width="50px" class="thumbnail" />
+                {!! Form::textarea('tag_description', null, array('placeholder' => 'Description','class' => 'form-control','style'=>'height:100px')) !!}
             </div>
         </div>
 

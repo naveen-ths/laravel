@@ -4,16 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model {
+class Setting extends Model {
 
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'categories';
+    protected $table = 'settings';
     
     
-    protected $fillable = ['cat_title', 'cat_description', 'created_at', 'updated_at'];
+    protected $fillable = ['cat_title', 'description', 'cat_image', 'created_at', 'updated_at'];
 
 }
