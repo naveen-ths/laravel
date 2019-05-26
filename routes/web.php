@@ -27,4 +27,9 @@ Route::resource('settings', 'SettingController');
 Route::resource('users', 'UserController');
 Route::resource('roles', 'RoleController');
 Route::resource('permissions', 'PermissionController');
-Route::get('/home', 'PageController@home')->name('home');
+Route::resource('pages', 'PageController');
+
+/**
+ * Front Pages Routes
+ */
+Route::get('/{slug}', 'PageController@showFront');

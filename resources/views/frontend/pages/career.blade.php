@@ -1,4 +1,4 @@
 @extends('layouts.app')
 @section('content')
- Contact us
+    i am the Career page
 @stop
