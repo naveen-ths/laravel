@@ -4,19 +4,22 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    
+     <!-- Styles -->
+    <link href="{{ asset('img/assets/favicon.png') }}" rel="icon" type="image/png">
+    <link href="{{ asset('css/init.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/ion-icons.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/etline-icons.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/theme.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/colors/purple.css') }}" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700%7CRaleway:400,100,200,300%7CHind:400,300" rel="stylesheet" type="text/css">
+        
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
-    <script src="https://use.fontawesome.com/9712be8772.js"></script>

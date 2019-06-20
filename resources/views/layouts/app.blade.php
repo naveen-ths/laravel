@@ -53,13 +53,13 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+                        @guest
                             <li><a class="blog-nav-item active" href="/home">Home</a></li>
                             <li><a class="blog-nav-item" href="/about">About Us</a></li>
                             <li><a class="blog-nav-item" href="/contact">Contact Us</a></li>
                             <li><a class="blog-nav-item" href="/career">Career</a></li>
                             <!--<li><a class="blog-nav-item" href="#">News</a></li>-->
                         <!-- Authentication Links -->
-                        @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else

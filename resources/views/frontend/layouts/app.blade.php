@@ -1,28 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
-<head>
-    @include('includes.head')    
-</head>
-<body>
-    <div id="app">
-        @include('includes.header')
-        
-        @if(Session::has('flash_message'))
-            <div class="container">      
-                <div class="alert alert-success"><em> {!! session('flash_message') !!}</em>
-                </div>
-            </div>
-        @endif 
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">              
-                @include ('errors.list') {{-- Including error file --}}
-            </div>
-        </div>
+    <head>
+        @include('frontend.includes.head')
+    </head>
+    <body data-fade-in="true">
+
+        <div class="pre-loader"><div></div></div>
+        @include('frontend.includes.header')
         
         @yield('content')
-    </div>
-
-    @include('includes.footer')
-</body>
+        
+        @include('frontend.includes.footer')
+    </body>
 </html>
