@@ -23,8 +23,8 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active treeview">
-            <a href="admin/dashboard">
+        <li class="active">
+            <a href="http://localhost:8000/admin/dashboard">
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
@@ -40,7 +40,7 @@
                 </span>
             </a>
             <ul class="treeview-menu" style="display: none;">
-                <li><a href="{{ route('posts.index') }}"><i class="fa fa-circle-o"></i> Add New Post</a></li>
+                <li><a href="{{ route('posts.index') }}"><i class="fa fa-circle-o"></i> Posts</a></li>
                 <li><a href="{{ route('posts.create') }}"><i class="fa fa-circle-o"></i> Add New Post</a></li>
             </ul>
         </li>

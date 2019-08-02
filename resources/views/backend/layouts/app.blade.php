@@ -1,6 +1,11 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html>
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>AdminLTE 2 | Dashboard</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         @include('backend.includes.head')
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -22,16 +27,13 @@
                 </div>
                 @endif 
 
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">              
-                        @include ('errors.list') {{-- Including error file --}}
-                    </div>
+                <!-- Content Wrapper. Contains page content -->
+                <div class="content-wrapper">
+                    @yield('content')
                 </div>
-
-                @yield('content')
+                @include('backend.includes.footer')
             </div>
         </div>
-
-        @include('backend.includes.footer')
+        @include('backend.includes.scripts')
     </body>
 </html>
